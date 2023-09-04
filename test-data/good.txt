@@ -1,0 +1,4 @@
+// Valid base62 encoding, but manually changed values that should result in an
+// invalid token (token doesn't match checksum, but passes the eye test)
+ghp_KtnBDULM6N1T8AfyHSMiYSR1YwOJZA2drewl // checksum characters shifted
+ghp_KtnBDULM6N1T8AfyHSMiYSR1YwOJZA1ESFXK // checksum characters case inverted

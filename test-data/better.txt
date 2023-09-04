@@ -1,0 +1,9 @@
+// Forged token (not issued by GitHub), but w/ valid base62 encoding and valid
+// checksum (using same alphabet as GitHub encoding mechanism)
+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
+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
+ghu_8ToKhABjPGw6doTdFt2zKhz8zomhCY2mdaOP
+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
+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
+ghu_58c3sH2AXflPGGWck3HMhCNpWAZOlv13f17n
+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

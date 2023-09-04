@@ -1,0 +1,7 @@
+// Manually created, obviously invalid tokens
+ghp_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ghp_zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+gho_000000000000000000000000000000000000
+ghu_asdfasdfasdfasdfasdfasdfasdfasdfasdf
+ghs_123412341234123412341234123412341234
+ghr_1234567890abcdefghijklmnopqrstuvwxyz

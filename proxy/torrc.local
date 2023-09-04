@@ -1,0 +1,12 @@
+## Minimal opinionated configuration for running a local tor proxy service.
+##
+HardwareAccel 1
+Log notice stdout
+DNSPort 0.0.0.0:8853
+SocksPort 0.0.0.0:9050
+DataDirectory /var/lib/tor
+ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy
+##
+## Include any extra configurations.
+%include /etc/tor/torrc.d/*.conf
+##
