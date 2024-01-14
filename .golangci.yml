@@ -18,6 +18,7 @@ linters:
     - deadcode
     - varcheck
   # not wanted
+    - depguard
     - gomnd
     - goerr113
     - ifshort

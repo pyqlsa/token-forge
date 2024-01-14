@@ -25,12 +25,12 @@ func (v VersionCmd) Run() error {
 }
 
 var cli struct {
-	Version  VersionCmd     `cmd:"" help:"Print version and exit."`
-	Generate cmds.GenCmd    `cmd:"" aliases:"gen" help:"Generate GitHub-like tokens."`
-	Disect   cmds.DisectCmd `cmd:"" aliases:"dis" help:"Disect GitHub-like tokens."`
-	Login    cmds.LoginCmd  `cmd:"" help:"Test login with one or more tokens."`
-	Local    cmds.LocalCmd  `cmd:"" help:"Perform a local collision test."`
-	IPCheck  cmds.IPCmd     `cmd:"" aliases:"ip" help:"Check resolved public ip address."`
+	Version  VersionCmd     `cmd:""        help:"Print version and exit."`
+	Generate cmds.GenCmd    `aliases:"gen" cmd:""                                     help:"Generate GitHub-like tokens."`
+	Disect   cmds.DisectCmd `aliases:"dis" cmd:""                                     help:"Disect GitHub-like tokens."`
+	Login    cmds.LoginCmd  `cmd:""        help:"Test login with one or more tokens."`
+	Local    cmds.LocalCmd  `cmd:""        help:"Perform a local collision test."`
+	IPCheck  cmds.IPCmd     `aliases:"ip"  cmd:""                                     help:"Check resolved public ip address."`
 }
 
 // Main.

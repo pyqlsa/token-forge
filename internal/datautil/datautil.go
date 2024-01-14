@@ -109,9 +109,9 @@ func Crc32ChecksumBytes(s string) []byte {
 // generateInsecureRandomBytes returns a byte slice of the given length w/
 // insecurely generated random data.
 func generateInsecureRandomBytes(length int) []byte {
-	irand.Seed(time.Now().UnixNano())
+	r := irand.New(irand.NewSource(time.Now().UnixNano())) //#nosec:G404
 	buf := make([]byte, length)
-	_, _ = irand.Read(buf) //#nosec:G404
+	_, _ = r.Read(buf) //#nosec:G404
 
 	return buf
 }
@@ -122,7 +122,6 @@ func generateInsecureRandomBytes(length int) []byte {
 // buffter), then the rest of the buffer is filled with insecurely generated
 // random data.
 func GenerateSecureRandomBytes(length int) []byte {
-	irand.Seed(time.Now().UnixNano())
 	buf := make([]byte, length)
 	n, err := srand.Read(buf)
 	if err != nil {
@@ -144,9 +143,9 @@ func SelectInsecureRandomInt(vals ...int) int {
 		return 0
 	}
 
-	irand.Seed(time.Now().UnixNano())
+	r := irand.New(irand.NewSource(time.Now().UnixNano())) //#nosec:G404
 
-	return vals[irand.Intn(length)] //#nosec:G404
+	return vals[r.Intn(length)] //#nosec:G404
 }
 
 // SelectInsecureRandomStr selects a random value from the given arguments
@@ -157,7 +156,7 @@ func SelectInsecureRandomStr(vals ...string) string {
 		return ""
 	}
 
-	irand.Seed(time.Now().UnixNano())
+	r := irand.New(irand.NewSource(time.Now().UnixNano())) //#nosec:G404
 
-	return vals[irand.Intn(length)] //#nosec:G404
+	return vals[r.Intn(length)] //#nosec:G404
 }

@@ -21,22 +21,22 @@ type Globals struct {
 
 // TokenSourceArgs represents a source of tokens.
 type TokenSourceArgs struct {
-	Token     string `short:"t" help:"Token to use." required:"" xor:"source" group:"Source"`
-	File      string `short:"f" help:"Path to file with tokens." type:"existingfile" required:"" xor:"source" group:"Source"`
-	Generated bool   `short:"g" help:"Use one or more generated tokens." required:"" xor:"source" group:"Source"`
-	NoAuth    bool   `short:"x" help:"Simply interact w/ the rate limit api with an unauthenticated client." required:"" xor:"source" group:"Source"`
+	Token     string `group:"Source" help:"Token to use."                                                         required:"" short:"t" xor:"source"`
+	File      string `group:"Source" help:"Path to file with tokens."                                             required:"" short:"f" type:"existingfile" xor:"source"`
+	Generated bool   `group:"Source" help:"Use one or more generated tokens."                                     required:"" short:"g" xor:"source"`
+	NoAuth    bool   `group:"Source" help:"Simply interact w/ the rate limit api with an unauthenticated client." required:"" short:"x" xor:"source"`
 }
 
 // TokenParams represents parameters for token generation.
 type TokenParams struct {
-	BatchSize int    `short:"b" default:"1000" help:"When testing for collisions, the number of tokens to test concurrently." group:"Token Params"`
-	NumTokens uint64 `short:"n" default:"1" help:"Number of tokens to test." group:"Token Params"` // max = 18446744073709551615`
-	Prefix    string `short:"p" help:"Token prefix to use; if not specified, each generated token will have a randomly selected prefix; only has an effect when generating tokens." group:"Token Params"`
+	BatchSize int    `default:"1000"       group:"Token Params"                                                                                                                                help:"When testing for collisions, the number of tokens to test concurrently." short:"b"`
+	NumTokens uint64 `default:"1"          group:"Token Params"                                                                                                                                help:"Number of tokens to test."                                               short:"n"` // max = 18446744073709551615`
+	Prefix    string `group:"Token Params" help:"Token prefix to use; if not specified, each generated token will have a randomly selected prefix; only has an effect when generating tokens." short:"p"`
 }
 
 // ProxyConfig represents parameters for setting a proxy.
 type ProxyConfig struct {
-	Proxy string `help:"Proxy to use for outbound connections." group:"Proxy Config"`
+	Proxy string `group:"Proxy Config" help:"Proxy to use for outbound connections."`
 }
 
 // setProxy validates a url string and sets it as a proxy via environment

@@ -17,7 +17,7 @@ import (
 type LocalCmd struct {
 	Globals
 	TokenParams
-	NumTests uint64 `short:"t" default:"1" help:"Number of tokens to load into the test token database."`
+	NumTests uint64 `default:"1" help:"Number of tokens to load into the test token database." short:"t"`
 }
 
 type tokenDB map[string]bool

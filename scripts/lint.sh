@@ -2,7 +2,7 @@
 set -euo pipefail
 IFS=$' \t\n'
 
-glciVersion="v1.51.2"
+glciVersion="v1.55.2"
 
 cd "$(dirname "${0}")"/..
 

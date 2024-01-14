@@ -32,7 +32,7 @@ type LoginCmd struct {
 	TokenSourceArgs
 	TokenParams
 	ProxyConfig
-	ForceCheck bool   `short:"c" help:"Force a check of the logged in user so the rate limit is decremented."`
+	ForceCheck bool   `help:"Force a check of the logged in user so the rate limit is decremented."                     short:"c"`
 	Host       string `help:"The GitHub Enterprise hostname to interact with; if not specified, github.com is assumed."`
 }
 
