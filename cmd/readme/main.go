@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"regexp"
 	"strings"
 )
@@ -15,15 +16,16 @@ import (
 const (
 	usageStart = "<!-- readme-help -->"
 	usageStop  = "<!-- readme-help end -->"
-	readmeFile = "./README.md"
+	readmeFile = "README.md"
 )
 
 // treat like a const.
-var bin = []string{"go", "run", "./cmd/token-forge/main.go"}
+var bin = []string{"go", "run", filepath.Join(".", "cmd", "token-forge", "main.go")}
 
 // Main.
 func main() {
-	fileBytes, err := os.ReadFile(readmeFile)
+	readmeFilePath := filepath.Join(".", readmeFile)
+	fileBytes, err := os.ReadFile(readmeFilePath)
 	if err != nil {
 		log.Fatalf("%v", err)
 	}
@@ -50,7 +52,7 @@ func main() {
 	newReadme := fmt.Sprintf("%s%s%s", readmePre, usage, readmePost)
 
 	//#nosec:G306
-	if err := os.WriteFile(readmeFile, []byte(newReadme), 0o644); err != nil {
+	if err := os.WriteFile(readmeFilePath, []byte(newReadme), 0o644); err != nil {
 		log.Fatalf("%v", err)
 	}
 
