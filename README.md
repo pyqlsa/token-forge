@@ -184,7 +184,7 @@ Proxy Config
 ```
 <!-- readme-help end -->
 
-### proxy
+### Proxy
 
 Breadcrumbs for a minimal local tor proxy are provided in the `./proxy` folder.
 
@@ -202,11 +202,20 @@ Run the proxy container:
 
 Extra private configurations can be placed in the `./proxy/priv.d` folder (e.g. bridges). All files in this folder will be copied into the container in a place where tor can detect them. If new files are added to this folder, or existing files are modified, the container must be rebuilt with `./proxy/build.sh` to be imported into the container image.
 
+Once running, to use this local proxy, just set the `--proxy` flag:
+```bash
+token-forge ip --proxy "socks5://127.0.0.1:9050"
+```
+or
+```bash
+token-forge ip --proxy "http://127.0.0.1:9080"
+```
+
 ## Dev
 
 This code contains a lot of hackery, but it seems to work.
 
-### lint
+### Lint
 
 Because you have to have at least *some* standards.
 
@@ -214,7 +223,7 @@ Because you have to have at least *some* standards.
 ./scripts/lint.sh
 ```
 
-### build
+### Build
 
 Build output for each `<platform>-<arch>` is written to the `./build` folder.
 
@@ -222,7 +231,7 @@ Build output for each `<platform>-<arch>` is written to the `./build` folder.
 ./scripts/build.sh
 ```
 
-### test
+### Test
 
 ```bash
 ./scrips/test.sh
@@ -230,7 +239,7 @@ Build output for each `<platform>-<arch>` is written to the `./build` folder.
 ./scripts/test.sh race
 ```
 
-### readme usage generation
+### Readme usage generation
 
 ```bash
 ./scripts/readme.sh
