@@ -129,13 +129,13 @@ func (token *GhToken) fillToken() {
 	token.SchemaChecked = false
 	token.FullToken = strings.TrimSpace(token.FullToken)
 
-	i := strings.Index(token.FullToken, Sep)
-	if i < 0 || i >= len(token.FullToken)-1 {
+	prefix, pl, found := strings.Cut(token.FullToken, Sep)
+	if !found {
 		return
 	}
 
-	token.Prefix = token.FullToken[:i]
-	token.EncodedPayload = token.FullToken[i+1:]
+	token.Prefix = prefix
+	token.EncodedPayload = pl
 	token.EncodedInput = token.EncodedPayload[:len(token.EncodedPayload)-ChecksumLength]
 	token.EncodedCrc = token.EncodedPayload[len(token.EncodedPayload)-ChecksumLength:]
 }

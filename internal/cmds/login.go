@@ -203,7 +203,7 @@ func queryRateLimit(ctx context.Context, client *github.Client, token *ghtoken.G
 		rate *github.Rate
 	)
 	passed := false
-	rateLimit, rsp, err := client.RateLimits(ctx)
+	rateLimit, rsp, err := client.RateLimit.Get(ctx)
 	switch {
 	case err != nil && rsp != nil:
 		// TODO: probably also need to check rate limit to detect collision somewhere.
@@ -298,7 +298,8 @@ func newGithubClient(ctx context.Context, host string, token *ghtoken.GhToken) (
 	if len(host) > 0 {
 		baseURL := fmt.Sprintf("%s%s%s", gheURLPrefix, host, gheBaseURLSuffix)
 		uploadURL := fmt.Sprintf("%s%s%s", gheURLPrefix, host, gheUploadURLSuffix)
-		client, err = github.NewEnterpriseClient(baseURL, uploadURL, httpClient)
+		// client, err = github.NewEnterpriseClient(baseURL, uploadURL, httpClient)
+		client, err = github.NewClient(httpClient).WithEnterpriseURLs(baseURL, uploadURL)
 		if err != nil {
 			return nil, fmt.Errorf("failed to establish enterprise client for host '%s': %w", host, err)
 		}

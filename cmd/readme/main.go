@@ -25,7 +25,7 @@ var bin = []string{"go", "run", filepath.Join(".", "cmd", "token-forge", "main.g
 // Main.
 func main() {
 	readmeFilePath := filepath.Join(".", readmeFile)
-	fileBytes, err := os.ReadFile(readmeFilePath)
+	fileBytes, err := os.ReadFile(readmeFilePath) //#nosec:G304
 	if err != nil {
 		log.Fatalf("%v", err)
 	}
