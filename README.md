@@ -45,7 +45,7 @@ This tool supports interacting with self-hosted GitHub Enterprise (by supplying 
 
 <!-- readme-help -->
 ```
-Usage: token-forge <command>
+Usage: token-forge <command> [flags]
 
 A tool to 'work' with GitHub tokens.
 
@@ -68,7 +68,7 @@ Flags:
 Run "token-forge <command> --help" for more information on a command.
 ```
 ```
-Usage: token-forge version
+Usage: token-forge version [flags]
 
 Print version and exit.
 
@@ -76,7 +76,7 @@ Flags:
   -h, --help    Show context-sensitive help.
 ```
 ```
-Usage: token-forge generate (gen)
+Usage: token-forge generate (gen) [flags]
 
 Generate GitHub-like tokens.
 
@@ -94,7 +94,7 @@ Token Params
                            an effect when generating tokens.
 ```
 ```
-Usage: token-forge disect (dis) --token=STRING --file=STRING --generated --no-auth
+Usage: token-forge disect (dis) --token=STRING --file=STRING --generated --no-auth [flags]
 
 Disect GitHub-like tokens.
 
@@ -119,7 +119,7 @@ Token Params
                            an effect when generating tokens.
 ```
 ```
-Usage: token-forge login --token=STRING --file=STRING --generated --no-auth
+Usage: token-forge login --token=STRING --file=STRING --generated --no-auth [flags]
 
 Test login with one or more tokens.
 
@@ -151,7 +151,7 @@ Proxy Config
   --proxy=STRING    Proxy to use for outbound connections.
 ```
 ```
-Usage: token-forge local
+Usage: token-forge local [flags]
 
 Perform a local collision test.
 
@@ -170,7 +170,7 @@ Token Params
                            an effect when generating tokens.
 ```
 ```
-Usage: token-forge ip-check (ip)
+Usage: token-forge ip-check (ip) [flags]
 
 Check resolved public ip address.
 
