@@ -31,6 +31,7 @@ var defaultOpts = []progressbar.Option{
 	progressbar.OptionShowCount(),
 	progressbar.OptionShowElapsedTimeOnFinish(),
 	progressbar.OptionShowIts(),
+	progressbar.OptionUseANSICodes(true),
 	progressbar.OptionSetDescription("[cyan]|[reset] Testing... [cyan]|[reset]"),
 	progressbar.OptionSetTheme(progressbar.Theme{
 		Saucer:        "[cyan]░",
