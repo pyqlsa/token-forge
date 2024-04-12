@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/google/go-github/v54/github"
+	"github.com/google/go-github/v61/github"
 	"github.com/pyqlsa/token-forge/internal/bar"
 	"github.com/pyqlsa/token-forge/internal/fileutil"
 	"github.com/pyqlsa/token-forge/internal/ghtoken"
