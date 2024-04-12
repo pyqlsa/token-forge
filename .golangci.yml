@@ -18,6 +18,9 @@ linters:
     - deadcode
     - varcheck
   # not wanted
+    - perfsprint # should we want this?
+    - copyloopvar # enable when go 1.22+
+    - intrange # enable when go 1.22+
     - depguard
     - gomnd
     - goerr113
@@ -57,7 +60,7 @@ linters-settings:
   gocyclo:
     min-complexity: 20
   govet:
-    check-shadowing: true
+    shadow: true
 
 issues:
   max-per-linter: 0

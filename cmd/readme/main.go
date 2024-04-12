@@ -52,7 +52,7 @@ func main() {
 	newReadme := fmt.Sprintf("%s%s%s", readmePre, usage, readmePost)
 
 	//#nosec:G306
-	if err := os.WriteFile(readmeFilePath, []byte(newReadme), 0o644); err != nil {
+	if err := os.WriteFile(readmeFilePath, []byte(newReadme), 0o600); err != nil {
 		log.Fatalf("%v", err)
 	}
 
