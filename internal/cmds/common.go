@@ -44,6 +44,7 @@ type ProxyConfig struct {
 // and NO_PROXY, then sets HTTP_PROXY and HTTPS_PROXY. These variables are
 // typically picked up by default http client implementations in underlying
 // libraries.
+// do this instead? https://medium.com/@prasincs/proxy-aware-http-client-in-go-6a3a487cbe5b
 func setProxy(u string) error {
 	if u == "" {
 		return nil

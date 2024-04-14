@@ -9,11 +9,21 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
 	"sync"
 )
 
 // treat this like a const.
-var ipCheckURLs = []string{"https://ifconfig.me/ip", "https://ipinfo.tw/ip", "https://myexternalip.com/raw", "https://ipecho.net/plain", "https://icanhazip.com"}
+var ipCheckURLs = []string{
+	"https://ipinfo.tw/ip",
+	"https://icanhazip.com",
+	"https://check.torproject.org/api/ip",
+	// these don't seem to like proxies
+	//"https://ifconfig.me/ip",
+	//"https://myexternalip.com/raw",
+	//"https://ipecho.net/plain",
+}
 
 // IPCmd represents the ip check cli command.
 type IPCmd struct {
@@ -31,6 +41,8 @@ func (p *IPCmd) Run() error {
 	if err := setProxy(p.Proxy); err != nil {
 		return err
 	}
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
+	defer stop()
 
 	//nolint:exhaustruct
 	r := &ipResult{
@@ -41,9 +53,12 @@ func (p *IPCmd) Run() error {
 	for _, u := range ipCheckURLs {
 		wg.Add(1)
 		go func(u string) {
-			ip, err := doIPCheck(u)
+			ip, err := doIPCheck(ctx, u)
 			if err != nil {
 				log.Printf("error: %v; continuing...", err)
+				wg.Done()
+
+				return
 			}
 			r.mu.Lock()
 			r.ips[u] = ip
@@ -60,8 +75,8 @@ func (p *IPCmd) Run() error {
 	return nil
 }
 
-func doIPCheck(u string) (string, error) {
-	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, u, nil)
+func doIPCheck(ctx context.Context, u string) (string, error) {
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
 	if err != nil {
 		return "", fmt.Errorf("error building ip check request: %w", err)
 	}
